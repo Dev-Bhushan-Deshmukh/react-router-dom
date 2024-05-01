@@ -1,17 +1,18 @@
 import React from 'react'
-import { Outlet, json } from 'react-router-dom'
+import { Outlet, json, useNavigation } from 'react-router-dom'
 import { useLoaderData } from 'react-router-dom'
 export const MainProduct = () => {
 const data=useLoaderData();
+const navigation=useNavigation();
 // let error_;
 // if(data.isError==true){
 //   error_=<p>{data.message}</p>
 // }
   return (
-    <div >MainProduct
+    <div id='main-container'>MainProduct
 {/* {error_} */}
 {data?.slice(0,10).reverse().map(item=><li>{item.title}</li>)}
-
+{navigation.state==='loading' && <p>Loading...</p>}
 <Outlet/>
 
     </div>

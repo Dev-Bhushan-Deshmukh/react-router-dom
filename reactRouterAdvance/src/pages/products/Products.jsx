@@ -6,19 +6,19 @@ export const Products = () => {
 
     let productList=[
 
-{id:'i1',title:'item-1'},
+{id:'1',title:'item-1'},
 
-{id:'i2',title:'item-2'},
+{id:'2',title:'item-2'},
 
-{id:'i3',title:'item-3'},
+{id:'3',title:'item-3'},
 
-{id:'i4',title:'item-4'},
+{id:'4',title:'item-4'},
 
     ]
   return (
     <div>Products
 
-{productList.map(item=><li key={item.id}> <Link to={item.title}>{item.title}</Link> </li> )}
+{productList.map(item=><li key={item.id}> <Link to={item.id}>{item.title}</Link> </li> )}
 
 
     </div>
