@@ -1,8 +1,17 @@
 import React from 'react'
-import { useRouteLoaderData ,Form, json, redirect} from 'react-router-dom'
+import { useRouteLoaderData ,Form, json, redirect, useActionData,useNavigation} from 'react-router-dom'
 export const NewProduct = () => {
   let data=useRouteLoaderData('px');
-  console.log(data)
+  let formentry=useActionData();
+  console.log(formentry);
+  let errResponse;
+  if(formentry && formentry.status==404)
+  {
+errResponse='invalid Data submitted!'
+  }
+  let navigation=useNavigation();
+  let formState=navigation.state==='submitting';
+  console.log(data);
   return (
     <div>NewProduct
 
@@ -11,7 +20,7 @@ export const NewProduct = () => {
       
 
 
-
+{errResponse}
 <Form method='post' action="">
 <label htmlFor="" >userId</label>
 <input name='userId' type="text"/>
@@ -23,7 +32,7 @@ export const NewProduct = () => {
 <label htmlFor="" >body</label>
 <input name='body' type="text"  />
 
-<button>save</button>
+  <button disabled={formState}> {formState?'submitting...':'save'}</button>
 
 
 
@@ -68,7 +77,13 @@ body:JSON.stringify(formData),
     throw json({message:'could not send data'},{status:500})
   }
   let responseData=await response.json()
+  responseData.status=404;
   console.log('post-data',responseData)
+  if( responseData.status==404)
+  {
+
+    return responseData
+  }
   return redirect('/product');
   // return  responseData;
 }
