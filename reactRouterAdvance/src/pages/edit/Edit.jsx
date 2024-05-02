@@ -5,7 +5,25 @@ export const Edit = () => {
   console.log(data)
   return (
     <div>Edit:
-{data.id}{data.title}
+<form action="">
+
+<label htmlFor="">id</label>
+<input type="text"defaultValue={data? data.id :''} />
+
+<label htmlFor="">title</label>
+<input type="text" defaultValue={data ? data.title :''} />
+<label htmlFor="" >body</label>
+<input type="text" defaultValue={data? data.body:''} />
+
+
+
+
+
+
+
+
+
+</form>
 
 
 

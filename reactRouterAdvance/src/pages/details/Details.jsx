@@ -10,7 +10,7 @@ console.log(data,'event')
   return (
     <div id='details-container'>Details
 <Link to='edit'>{params.productId}</Link>
-
+<Link to='new'>{params.productId}</Link>
 <Outlet/>
 
     </div>

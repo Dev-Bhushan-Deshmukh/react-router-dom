@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { Home } from "./pages/home/Home"
 import { Products } from "./pages/products/Products"
 import { Details ,fetchData as loaderEvent} from "./pages/details/Details"
-import { NewProduct } from "./pages/newProduct/NewProduct"
+import { NewProduct ,action as formAction} from "./pages/newProduct/NewProduct"
 import { MainPage } from "./pages/MainPage/MainPage"
 import { MainProduct } from "./pages/mainProduct/MainProduct"
 import { fetchData as loaderFunction } from "./pages/mainProduct/MainProduct"
@@ -22,11 +22,11 @@ function App() {
       
       children:[    
 
-      { path: 'edit', element: <Edit /> }]
+      { path: 'edit', element: <Edit /> },  { path: 'new',action:formAction, element: <NewProduct /> },]
       
       
       },
-      { path: 'new', element: <NewProduct /> },
+    
         
         
     
